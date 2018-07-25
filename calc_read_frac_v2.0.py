@@ -38,7 +38,7 @@ if __name__ == '__main__':
     print 'Generating plots and calculating AUCs...'
     with open(outputfile,'w') as o:
         w = csv.writer(o,delimiter='\t')
-        w.writerow((['Sample','AUC','Library representation at '+str(thr*100)+'% cumuative reads(in %)']))
+        w.writerow((['Sample','AUC','Library representation at '+str(thr*100)+'% cumuative reads(in %)','Number of sgRNAs at '+str(thr*100)+'% cumuative reads(in %)']))
         for i,c in enumerate(colnames[2:]):
             row = [c]
             col_sum = float(sum(input_df.ix[:,c]))
@@ -54,8 +54,10 @@ if __name__ == '__main__':
             ax1.set_ylim(0.0,1.0)
             auc = metrics.auc(x_axis,y_axis)
             row.append(auc)
-            frac_sg = round(list(input_df.ix[input_df.Cumulative_sum >= thr,'x-axis'])[0]*100,2)
+            frac_sg = round(list(input_df.ix[input_df.Cumulative_sum <= thr,'x-axis'])[-1]*100,2)
+            num_sg = len(list(input_df.ix[input_df.Cumulative_sum <= thr,'x-axis']))
             row.append(frac_sg)
+            row.append(num_sg)
             w.writerow((row))
             ax1.text(0.6,0.2,'AUC = '+str(round(auc,2)),fontsize=14,fontweight='bold')
             ax1.tick_params(axis='both',labelsize=14,)
