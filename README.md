@@ -19,6 +19,7 @@
 python calc_read_frac_v2.0.py --input-file \<Path to input file\> --thr \<Threshold\> --outputfolder \<Outputfolder name\>
 
 
+---------------------------------------------------------------------------------------------------------------------------
 
 <b>Version: 1.0 </b>  
 
