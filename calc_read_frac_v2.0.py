@@ -12,7 +12,7 @@ from matplotlib import rc
 
 def get_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--inputfile',
+    parser.add_argument('--input-file',
         type=str,
         help='File with raw sequencing reads')
     parser.add_argument('--thr',
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     outputfolder = args.outputfolder
     print 'Creating output folder...'
     os.system('mkdir '+outputfolder)    
-    inputfile = args.inputfile
+    inputfile = args.input_file
     input_df = pd.read_table(inputfile)
     colnames = list(input_df.columns)
     outputfile = outputfolder+'/aucs.txt'
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             row = [c]
             col_sum = float(sum(input_df.ix[:,c]))
             input_df['read_frac'] = [x/col_sum for x in input_df.ix[:,c]]
-            input_df = input_df.sort_values(by='read_frac',ascending=False)
+            input_df = input_df.sort(columns='read_frac',ascending=False)
             input_df['Cumulative_sum'] = np.cumsum(input_df.read_frac)
             input_df['x-axis'] = [x/float(len(input_df)) for x in range(0,len(input_df))]
             fig1,ax1 = plt.subplots()
