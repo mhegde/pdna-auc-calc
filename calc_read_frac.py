@@ -6,6 +6,8 @@ Email: mhegde@broadinstitute.org
 import pandas as pd
 import os, argparse, csv
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from sklearn import metrics
 from matplotlib import rc

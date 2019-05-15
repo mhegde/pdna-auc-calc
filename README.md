@@ -3,7 +3,7 @@
 <b>Author</b>: Mudra Hegde  
 <b>Email</b>: mhegde@broadinstitute.org  
 
-## <b>Version: 2.0</b>
+## <b>Version: 2.1</b>
 <b>Required packages</b>
 1. pandas <= 0.16.2
 2. numpy
@@ -16,7 +16,7 @@
 3. <b>Output folder</b>: Folder name for output files storage
 
 <b>To run this script, type the following on the terminal:</b>
-python calc_read_frac_v2.0.py --input-file \<Path to input file\> --thr \<Threshold\> --outputfolder \<Outputfolder name\>
+python calc_read_frac.py --input-file \<Path to input file\> --thr \<Threshold\> --outputfolder \<Outputfolder name\>
 
 
 ---------------------------------------------------------------------------------------------------------------------------
